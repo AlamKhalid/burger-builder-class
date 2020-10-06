@@ -27,13 +27,17 @@ export const auth = (email, pass, isSignUp) => {
     dispatch(authStart());
     const authData = { email, password: pass, returnSecureToken: true };
     try {
-      const url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDw0AVtF5-_LWMUELAymalhRpNZ_JCDxws";
-      if (!isSignUp) url = "";
+      let url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDw0AVtF5-_LWMUELAymalhRpNZ_JCDxws";
+      if (!isSignUp)
+        url =
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDw0AVtF5-_LWMUELAymalhRpNZ_JCDxws";
       const response = await axios.post(url, authData);
+      console.log(response);
       dispatch(authSuccess(response.data.idToken, response.data.localId));
     } catch (ex) {
-      dispatch(authFail());
+      console.log(ex);
+      dispatch(authFail(ex));
     }
   };
 };
