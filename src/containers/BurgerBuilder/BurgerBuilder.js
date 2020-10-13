@@ -9,7 +9,7 @@ import errorHandler from "./../../components/ErrorHandler/ErrorHandler";
 import * as actions from "../../store/actions/index";
 import axios from "../../axios-orders";
 
-class BurgerBuilder extends PureComponent {
+export class BurgerBuilder extends PureComponent {
   state = {
     purchasing: false,
   };

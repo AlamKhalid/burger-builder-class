@@ -57,7 +57,6 @@ export const auth = (email, pass, isSignUp) => {
         url =
           "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDw0AVtF5-_LWMUELAymalhRpNZ_JCDxws";
       const response = await axios.post(url, authData);
-      console.log(response);
       const expirationDate = newDate(
         new Date().getTime() + response.data.expiresIn * 1000
       );
@@ -67,7 +66,6 @@ export const auth = (email, pass, isSignUp) => {
       dispatch(authSuccess(response.data.idToken, response.data.localId));
       dispatch(checkAuthTimeout(response.data.expiresIn));
     } catch (ex) {
-      console.log(ex);
       dispatch(authFail(ex.response.data.error));
     }
   };
