@@ -70,7 +70,7 @@ export class BurgerBuilder extends PureComponent {
             price={this.props.price}
             purchaseable={this.updatePurchaseState(this.props.ings)}
             ordered={this.purchaseHandler}
-            isAuth={props.isAuthenticated}
+            isAuth={this.props.isAuthenticated}
           />
         </React.Fragment>
       );
